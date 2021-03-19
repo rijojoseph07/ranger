@@ -66,6 +66,8 @@ public class SolrAccessAuditsService extends AccessAuditsService {
 		// Make call to Solr
 		SolrClient solrClient = solrMgr.getSolrClient();
 		final boolean hiveQueryVisibility = PropertiesUtil.getBooleanProperty("ranger.audit.hive.query.visibility", true);
+		final boolean prestoQueryVisibility = PropertiesUtil.getBooleanProperty("ranger.audit.presto.query.visibility", true);
+
 		if (solrClient == null) {
 			LOGGER.warn("Solr client is null, so not running the query.");
 			throw restErrorUtil.createRESTException(
@@ -84,10 +86,11 @@ public class SolrAccessAuditsService extends AccessAuditsService {
 			SolrDocument doc = docs.get(i);
 			VXAccessAudit vXAccessAudit = populateViewBean(doc);
                         if (vXAccessAudit != null) {
-                                if (!hiveQueryVisibility && "hive".equalsIgnoreCase(vXAccessAudit.getServiceType())) {
+                                if ((!hiveQueryVisibility && "hive".equalsIgnoreCase(vXAccessAudit.getServiceType()))
+										|| (!prestoQueryVisibility && "presto".equalsIgnoreCase(vXAccessAudit.getServiceType()))) {
                                         vXAccessAudit.setRequestData(null);
                                 }
-                                else if("hive".equalsIgnoreCase(vXAccessAudit.getServiceType()) && ("grant".equalsIgnoreCase(vXAccessAudit.getAccessType()) || "revoke".equalsIgnoreCase(vXAccessAudit.getAccessType()))){
+                                else if(("hive".equalsIgnoreCase(vXAccessAudit.getServiceType()) || "presto".equalsIgnoreCase(vXAccessAudit.getServiceType())) && ("grant".equalsIgnoreCase(vXAccessAudit.getAccessType()) || "revoke".equalsIgnoreCase(vXAccessAudit.getAccessType()))){
                                         try {
                                             if (vXAccessAudit.getRequestData() != null) {
                                                 vXAccessAudit.setRequestData(java.net.URLDecoder.decode(vXAccessAudit.getRequestData(), "UTF-8"));

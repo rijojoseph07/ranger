@@ -17,36 +17,33 @@
 -->
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
+    <!--  The following properties are used for 2-way SSL client server validation -->
     <property>
-        <name>ranger.plugin.presto.service.name</name>
-        <value>cl1_presto</value>
+        <name>xasecure.policymgr.clientssl.keystore</name>
+        <value>trinoservice-clientcert.jks</value>
         <description>
-            Name of the Ranger service containing policies for this SampleApp instance
+            Java Keystore files
         </description>
     </property>
-
     <property>
-        <name>ranger.plugin.presto.policy.source.impl</name>
-        <value>org.apache.ranger.authorization.presto.authorizer.RangerAdminClientImpl</value>
+        <name>xasecure.policymgr.clientssl.truststore</name>
+        <value>cacerts-xasecure.jks</value>
         <description>
-            Policy source.
+            java truststore file
         </description>
     </property>
-
     <property>
-        <name>ranger.plugin.presto.policy.pollIntervalMs</name>
-        <value>30000</value>
+        <name>xasecure.policymgr.clientssl.keystore.credential.file</name>
+        <value>jceks://file/tmp/keystore-trinoservice-ssl.jceks</value>
         <description>
-            How often to poll for changes in policies?
+            java  keystore credential file
         </description>
     </property>
-
     <property>
-        <name>ranger.plugin.presto.policy.cache.dir</name>
-        <value>${project.build.directory}</value>
+        <name>xasecure.policymgr.clientssl.truststore.credential.file</name>
+        <value>jceks://file/tmp/truststore-trinoservice-ssl.jceks</value>
         <description>
-            Directory where Ranger policies are cached after successful retrieval from the source
+            java  truststore credential file
         </description>
     </property>
-
 </configuration>

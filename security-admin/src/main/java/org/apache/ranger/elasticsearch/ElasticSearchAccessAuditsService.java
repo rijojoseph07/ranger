@@ -59,6 +59,7 @@ public class ElasticSearchAccessAuditsService extends org.apache.ranger.AccessAu
 
 		RestHighLevelClient client = elasticSearchMgr.getClient();
 		final boolean hiveQueryVisibility = PropertiesUtil.getBooleanProperty("ranger.audit.hive.query.visibility", true);
+		final boolean prestoQueryVisibility = PropertiesUtil.getBooleanProperty("ranger.audit.presto.query.visibility", true);
 		if (client == null) {
 			LOGGER.warn("ElasticSearch client is null, so not running the query.");
 			throw restErrorUtil.createRESTException(
@@ -93,9 +94,10 @@ public class ElasticSearchAccessAuditsService extends org.apache.ranger.AccessAu
 			if (vXAccessAudit != null) {
 				String serviceType = vXAccessAudit.getServiceType();
 				boolean isHive = "hive".equalsIgnoreCase(serviceType);
-				if (!hiveQueryVisibility && isHive) {
+				boolean isPresto = "presto".equalsIgnoreCase(serviceType);
+				if ((!hiveQueryVisibility && isHive) || (!prestoQueryVisibility && isPresto)) {
 						vXAccessAudit.setRequestData(null);
-				} else if (isHive) {
+				} else if (isHive || isPresto) {
 						String accessType = vXAccessAudit.getAccessType();
 						if ("grant".equalsIgnoreCase(accessType)
 								|| "revoke".equalsIgnoreCase(accessType)) {
