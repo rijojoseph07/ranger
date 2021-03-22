@@ -14,7 +14,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
---><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+--><project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.apache</groupId>
@@ -69,7 +69,7 @@
         <maven.version.required>3.6.3</maven.version.required>
         <java.version.required>1.8</java.version.required>
         <javac.source.version>1.8</javac.source.version>
-        <javac.target.version>1.8</javac.target.version>
+        <javac.target.version>11</javac.target.version>
         <distMgmtStagingId>apache.staging.https</distMgmtStagingId>
         <distMgmtStagingName>Apache Release Distribution Repository</distMgmtStagingName>
         <distMgmtStagingUrl>https://repository.apache.org/service/local/staging/deploy/maven2</distMgmtStagingUrl>
@@ -172,7 +172,8 @@
         <noggit.version>0.8</noggit.version>
         <owasp-java-html-sanitizer.version>r239</owasp-java-html-sanitizer.version>
         <paranamer.version>2.3</paranamer.version>
-        <presto.version>333</presto.version>
+        <presto.version>340</presto.version>
+        <trino.version>353</trino.version>
         <poi.version>4.1.2</poi.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <protobuf-java.version>2.5.0</protobuf-java.version>
@@ -208,6 +209,13 @@
         <presto.guava.version>26.0-jre</presto.guava.version>
         <presto.validation-api.version>2.0.1.Final</presto.validation-api.version>
         <presto.re2j.version>1.1</presto.re2j.version>
+        <!-- trino plugin deps -->
+        <trino.airlift.version>0.192</trino.airlift.version>
+        <trino.bval-jsr.version>2.0.0</trino.bval-jsr.version>
+        <trino.guice.version>4.2.2</trino.guice.version>
+        <trino.guava.version>26.0-jre</trino.guava.version>
+        <trino.validation-api.version>2.0.1.Final</trino.validation-api.version>
+        <trino.re2j.version>1.1</trino.re2j.version>
 
     <!-- Azure Key Vault dependencies -->
         <com.microsoft.azure.version>1.22.0</com.microsoft.azure.version>
@@ -254,6 +262,7 @@
                 <module>plugin-nifi</module>
                 <module>plugin-nifi-registry</module>
                 <module>plugin-presto</module>
+                <module>plugin-trino</module>
                 <module>plugin-kudu</module>
                 <module>ugsync-util</module>
                 <module>ugsync</module>
@@ -276,6 +285,7 @@
                 <module>ranger-atlas-plugin-shim</module>
                 <module>ranger-kms-plugin-shim</module>
                 <module>ranger-presto-plugin-shim</module>
+                <module>ranger-trino-plugin-shim</module>
                 <module>ranger-examples</module>
                 <module>ranger-tools</module>
                 <module>plugin-atlas</module>
@@ -518,6 +528,20 @@
                 <module>ranger-util</module>
                 <module>plugin-presto</module>
                 <module>ranger-presto-plugin-shim</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>ranger-trino-plugin</id>
+            <modules>
+                <module>agents-audit</module>
+                <module>agents-common</module>
+                <module>agents-cred</module>
+                <module>agents-installer</module>
+                <module>credentialbuilder</module>
+                <module>ranger-plugin-classloader</module>
+                <module>ranger-util</module>
+                <module>plugin-trino</module>
+                <module>ranger-trino-plugin-shim</module>
             </modules>
         </profile>
         <profile>

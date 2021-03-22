@@ -17,11 +17,11 @@
  * under the License.
  */
 
- 
+
 
 define(function(require) {
     'use strict';
-	
+
     var XAEnums = require('utils/XAEnums');
     var localization = require('utils/XALangSupport');
     var XAUtils = require('utils/XAUtils');
@@ -130,7 +130,7 @@ define(function(require) {
         }).open();
         modal.$el.find('.cancel').hide();
     };
-	
-	return XAViewUtil;
+
+    return XAViewUtil;
 
 });

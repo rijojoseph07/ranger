@@ -319,6 +319,19 @@
         <value>true</value>
         <description></description>
     </property>
+
+	<property>
+		<name>ranger.audit.presto.query.visibility</name>
+		<value>true</value>
+		<description></description>
+	</property>
+
+	<property>
+		<name>ranger.audit.trino.query.visibility</name>
+		<value>true</value>
+		<description></description>
+	</property>
+
     <property>
 		<name>ranger.service.https.attrib.keystore.credential.alias</name>
 		<value>keyStoreCredentialAlias</value>

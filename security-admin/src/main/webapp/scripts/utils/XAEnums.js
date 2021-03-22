@@ -122,7 +122,9 @@ define(function(require) {
 		ASSET_AGENT:{value:4, label:'Agent', rbkey:'xa.enum.AssetType.ASSET_KNOX', tt: 'lbl.AssetType_ASSET_KNOX'},
 		ASSET_KNOX:{value:5, label:'Knox', rbkey:'xa.enum.AssetType.ASSET_KNOX', tt: 'lbl.AssetType_ASSET_KNOX'},
 		ASSET_STORM:{value:6, label:'Storm', rbkey:'xa.enum.AssetType.ASSET_STORM', tt: 'lbl.AssetType_ASSET_STORM'},
-		ASSET_SOLR:{value:7, label:'Solr', rbkey:'xa.enum.AssetType.ASSET_SOLR', tt: 'lbl.AssetType_ASSET_SOLR'}
+		ASSET_SOLR:{value:7, label:'Solr', rbkey:'xa.enum.AssetType.ASSET_SOLR', tt: 'lbl.AssetType_ASSET_SOLR'},
+		ASSET_PRESTO:{value:8, label:'Presto', rbkey:'xa.enum.AssetType.ASSET_PRESTO', tt: 'lbl.AssetType_ASSET_PRESTO'}
+		ASSET_TRINO:{value:9, label:'Trino', rbkey:'xa.enum.AssetType.ASSET_TRINO', tt: 'lbl.AssetType_ASSET_TRINO'}
 	});
 	
 	XAEnums.ServiceType = mergeParams(XAEnums.ServiceType, {
@@ -134,7 +136,10 @@ define(function(require) {
 		Service_STORM:{value:5, label:'storm', rbkey:'xa.enum.AssetType.ASSET_STORM', tt: 'lbl.AssetType_ASSET_STORM'},
 		Service_SOLR:{value:6, label:'solr', rbkey:'xa.enum.AssetType.ASSET_SOLR', tt: 'lbl.AssetType_ASSET_SOLR'},
     SERVICE_TAG:{value:7, label:'tag', rbkey:'xa.enum.ServiceType.SERVICE_TAG', tt: 'lbl.ServiceType_SERVICE_TAG'},
-    Service_KMS:{value:8, label:'kms', rbkey:'xa.enum.ServiceType.SERVICE_KMS', tt: 'lbl.ServiceType_SERVICE_KMS'}
+    Service_KMS:{value:8, label:'kms', rbkey:'xa.enum.ServiceType.SERVICE_KMS', tt: 'lbl.ServiceType_SERVICE_KMS'},
+    Service_PRESTO:{value:9, label:'presto', rbkey:'xa.enum.AssetType.ASSET_PRESTO', tt: 'lbl.AssetType_ASSET_PRESTO'}
+    Service_PRESTO:{value:10, label:'trino', rbkey:'xa.enum.AssetType.ASSET_TRINO', tt: 'lbl.AssetType_ASSET_TRINO'}
+
 	});
 
 	XAEnums.AuthStatus = mergeParams(XAEnums.AuthStatus, {
