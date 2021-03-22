@@ -69,7 +69,7 @@
         <maven.version.required>3.6.2</maven.version.required>
         <java.version.required>1.8</java.version.required>
         <javac.source.version>1.8</javac.source.version>
-        <javac.target.version>11</javac.target.version>
+        <javac.target.version>1.8</javac.target.version>
         <distMgmtStagingId>apache.staging.https</distMgmtStagingId>
         <distMgmtStagingName>Apache Release Distribution Repository</distMgmtStagingName>
         <distMgmtStagingUrl>https://repository.apache.org/service/local/staging/deploy/maven2</distMgmtStagingUrl>
@@ -1092,7 +1092,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>${assembly.plugin.version}</version>
                 <configuration>
-                    <skipAssembly>true</skipAssembly>
+                    <skipAssembly>false</skipAssembly>
                 </configuration>
             </plugin>
             <plugin>
